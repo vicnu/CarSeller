@@ -6,7 +6,9 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.shortcuts import reverse
+from PIL import Image
 
 class Carbodytype(models.Model):
     carbodyname = models.CharField(db_column='CarBodyName', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -95,6 +97,7 @@ class Region(models.Model):
 
 
 class Sellrequest(models.Model):
+
     price = models.IntegerField(db_column='Price', blank=True, null=True)  # Field name made lowercase.
     region = models.ForeignKey(Region, models.DO_NOTHING, db_column='Region', blank=True, null=True)  # Field name made lowercase.
     inginvolume = models.FloatField(db_column='InginVolume', blank=True, null=True)  # Field name made lowercase.
@@ -106,12 +109,29 @@ class Sellrequest(models.Model):
     color = models.CharField(db_column='Color', max_length=45, blank=True, null=True)  # Field name made lowercase.
     carmodelid = models.ForeignKey(Carmodel, models.DO_NOTHING, db_column='CarModelId', blank=True, null=True)  # Field name made lowercase.
     carstateid = models.ForeignKey(Carstate, models.DO_NOTHING, db_column='CarStateId', blank=True, null=True)  # Field name made lowercase.
+    #CreationDate = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    # image = models.ImageField(default="33.jpg", null=True, blank=True, upload_to='cars_imgs')
+
     def __str__(self):
+
         return str(f"{self.carmodelid.modelname},{self.carmodelid.carvenderid.carvendername}")
+
+    def get_absolute_url(self):
+      return reverse("sell_detail", kwargs={"pk": self.pk})
+
+    # def save(self,*args,**kwargs):
+    #     super().save(*args, **kwargs)
+    #     img=Image.open(self.image.path)
+    #
+    #     if img.height>300 or img.width>300:
+    #         img.thumbnail((300,300))
+    #         img.save(self.image.path)
+
+
     class Meta:
         managed = False
         db_table = 'sellrequest'
-
+        # ordering = ('-CreationDate',)
 
 class User(models.Model):
     name = models.CharField(db_column='Name', max_length=45, blank=True, null=True)  # Field name made lowercase.

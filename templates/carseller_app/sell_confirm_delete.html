@@ -4,12 +4,12 @@
    <form method="POST">
        {%csrf_token%}
 
-       <h3>Delete trip!{{object.Title}}</h3>
+       <h3>Delete !{{object.Title}}</h3>
 
 
        <div class="">
            <button type="submit">Delete</button>
-            <a href="{% url 'tyr_detail' object.id %}">Cancel</a>
+            <a href="{% url 'sell_detail' object.id %}">Cancel</a>
        </div>
    </form>
 {% endblock %}

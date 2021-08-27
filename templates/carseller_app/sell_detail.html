@@ -12,15 +12,22 @@
                      src="{{object.Author.profile.image.url}}"
                      alt ="{{object.Author.username}}"></h3>
         {%endif%}
-        <p> {{object.TyrName}}</p>
-        <p> {{object.TyrType}}</p>
-        <p> {{object.TyrPrice }}</p>
-        <p> {{object.TyrPoint }}</p>
+        <p> {{object.price}}</p>
+        <p> {{object.region}}</p>
+        <p> {{object.carstateid }}</p>
+        <p> {{object.carmodelid }}</p>
+        <p> {{object.inginvolume}}</p>
+        <p> {{object.fueltypeid}}</p>
+        <p> {{object.carbodyid }}</p>
+        <p> {{object.drivetypeid }}</p>
+        <p> {{object.gearboxid}}</p>
+        <p> {{object.color }}</p>
+
         <p><img style = "width: 150px;height: 150px"src="{{object.image.url}}"
-                     alt ="{{object.image.name}}"></h3></p>
+                     alt ="{{object.image.name}}"></p>
     {%if object.Author == user%}
-            <a href="{% url 'tyr-update' object.id%}"><button>Update </button></a>
-            <a href="{% url 'tyr-delete' object.id%}"><button>Delete </button></a>
+            <a href="{% url 'sell-update' object.id%}"><button>Update </button></a>
+            <a href="{% url 'sell-delete' object.id%}"><button>Delete </button></a>
         {%endif%}
     </div>
 

@@ -39,7 +39,7 @@ urlpatterns = [
     path('sell/<int:pk>',
          views.SellDetailView.as_view(template_name="carseller_app/sell_detail.html"),
          name="sell_detail"),
-    path('sell/new/',views.SellCreateView.as_view(),name="sell-create"),
+    path('sell/new/',views.SellCreateView.as_view(template_name="carseller_app/sellrequest_form.html"),name="sell-create"),
     path('sell/<int:pk>/update/', views.SellUpdateView.as_view(), name="sell-update"),
     path('sell/<int:pk>/delete/', views.SellDeleteView.as_view(), name="sell-delete"),
 ]

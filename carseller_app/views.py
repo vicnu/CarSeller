@@ -57,7 +57,8 @@ class SellDetailView(DetailView):
 # #проверка от класса на залогиненого пользователя
 class SellCreateView(LoginRequiredMixin,CreateView):
     model=Sellrequest
-    fields=['price','region','inginvolume',"color"]
+    fields = ['price', 'region', 'inginvolume', "fueltypeid", "carbodyid",
+              "drivetypeid", "gearboxid", "color", "carmodelid", "carstateid"]
 
 
     def form_valid(self, form):
@@ -66,7 +67,8 @@ class SellCreateView(LoginRequiredMixin,CreateView):
 
 class SellUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
     model=Sellrequest
-    fields=['TyrName','TyrType','TyrPrice','image']
+    fields=['price','region','inginvolume',"fueltypeid","carbodyid",
+            "drivetypeid","gearboxid","color","carmodelid","carstateid"]
 
     def form_valid(self, form):
         form.instance.Author=self.request.user
