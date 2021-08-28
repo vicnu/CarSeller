@@ -23,8 +23,8 @@
         <p> {{object.gearboxid}}</p>
         <p> {{object.color }}</p>
 
-        <p><img style = "width: 150px;height: 150px"src="{{object.image.url}}"
-                     alt ="{{object.image.name}}"></p>
+        <p><img style = "width: 150px;height: 150px"src="{{object.Image.url}}"
+                     alt ="{{object.Image.name}}"></p>
     {%if object.userid != 0 %}
             <a href="{% url 'sell-update' object.id%}"><button>Update </button></a>
             <a href="{% url 'sell-delete' object.id%}"><button>Delete </button></a>

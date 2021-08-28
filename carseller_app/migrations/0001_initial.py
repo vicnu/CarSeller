@@ -2,6 +2,8 @@
 
 from django.db import migrations, models
 
+from carseller_app.models import User, Region
+
 
 class Migration(migrations.Migration):
 
@@ -116,7 +118,8 @@ class Migration(migrations.Migration):
                 ('price', models.IntegerField(blank=True, db_column='Price', null=True)),
                 ('inginvolume', models.FloatField(blank=True, db_column='InginVolume', null=True)),
                 ('color', models.CharField(blank=True, db_column='Color', max_length=45, null=True)),
-            ],
+
+    ],
             options={
                 'db_table': 'sellrequest',
                 'managed': False,
