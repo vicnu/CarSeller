@@ -109,8 +109,9 @@ class Sellrequest(models.Model):
     color = models.CharField(db_column='Color', max_length=45, blank=True, null=True)  # Field name made lowercase.
     carmodelid = models.ForeignKey(Carmodel, models.DO_NOTHING, db_column='CarModelId', blank=True, null=True)  # Field name made lowercase.
     carstateid = models.ForeignKey(Carstate, models.DO_NOTHING, db_column='CarStateId', blank=True, null=True)  # Field name made lowercase.
-    CreationDate = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-    Image = models.ImageField(default="33.jpg", null=True, blank=True, upload_to='cars_imgs')
+    CreationDate = models.DateTimeField(db_column='CreationDate',auto_now_add=True, null=True, blank=True)
+    Image = models.ImageField(db_column='Image',default="33.jpg", null=True, blank=True, upload_to='cars_imgs')
+    Author = models.ForeignKey(User, db_column='Author', null=True, default=None, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
 
@@ -141,8 +142,10 @@ class User(models.Model):
     country = models.CharField(db_column='Country', max_length=45, blank=True, null=True)  # Field name made lowercase.
     city = models.CharField(db_column='City', max_length=45, blank=True, null=True)  # Field name made lowercase.
     region = models.ForeignKey(Region, models.DO_NOTHING, db_column='Region', blank=True, null=True)  # Field name made lowercase.
+
     def __str__(self):
         return str(f"{self.name} {self.surname}")
     class Meta:
-        managed = False
+
         db_table = 'user'
+        ordering = ('name',)
