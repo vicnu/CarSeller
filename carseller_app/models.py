@@ -10,6 +10,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import reverse
 from PIL import Image
 
+import user
+
+
 class Carbodytype(models.Model):
     carbodyname = models.CharField(db_column='CarBodyName', max_length=45, blank=True, null=True)  # Field name made lowercase.
 

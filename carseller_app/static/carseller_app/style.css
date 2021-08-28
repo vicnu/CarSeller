@@ -2,9 +2,12 @@ body {margin:0;
   background: url("/static/33.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  opacity: 0.7;
 
 }
-
+.white{
+  color: black;
+}
 .container
 {
   padding: 530px;
@@ -34,7 +37,7 @@ li {
 
 .navbar a:hover {
   background: #ddd;
-  color: black;
+  color: rebeccapurple;
 }
 
 .styr
@@ -43,7 +46,8 @@ li {
   border-radius: 4px;
   border-style: outset ;
   font-family: "Times New Roman";
-  color: mediumslateblue;
+  font-weight:bold;
+  color: rebeccapurple;
 }
 .sconacts
 {
@@ -53,13 +57,14 @@ li {
 
 .squestions
 {
-  border: 3px  red;
+  border: 3px black;
   border-radius: 4px;
   border-style: dashed ;
 }
 .sansvers
 {
-  border: 3px  blue;
+  border: 3px  black;
   border-radius: 4px;
   border-style: dashed ;
+  font-weight:bold
 }

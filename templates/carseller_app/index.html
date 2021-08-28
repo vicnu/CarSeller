@@ -5,8 +5,8 @@
 {{title}}
 {% endblock %}
 {% block description %}
-    <H1 style="margin-top:100px">Купи машину</H1>
-    <br>
+    <H1 style="margin-top:100px" >Купи машину</H1>
+
 
 {%for sell in sells%}
 {#    <div  class="styr">#}
@@ -29,7 +29,8 @@
 
         </div>
 {%endfor%}
-<form method="GET">
+    <h3 class="white">Найди свою машину</h3>
+<form method="GET" class="white">
     {%csrf_token%}
     {{ filter.form|crispy }}
     <button type = "submit">Filter</button>
