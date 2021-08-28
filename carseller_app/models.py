@@ -17,7 +17,7 @@ class Carbodytype(models.Model):
         return self.carbodyname
 
     class Meta:
-        managed = False
+
         db_table = 'carbodytype'
 
 
@@ -27,7 +27,7 @@ class Carmodel(models.Model):
     def __str__(self):
         return self.modelname
     class Meta:
-        managed = False
+
         db_table = 'carmodel'
 
 
@@ -36,7 +36,7 @@ class Carstate(models.Model):
     def __str__(self):
         return self.state
     class Meta:
-        managed = False
+
         db_table = 'carstate'
 
 
@@ -46,7 +46,7 @@ class Cart(models.Model):
     requestid = models.ForeignKey('Sellrequest', models.DO_NOTHING, db_column='RequestId', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+
         db_table = 'cart'
 
 
@@ -55,7 +55,7 @@ class Carvender(models.Model):
     def __str__(self):
         return self.carvendername
     class Meta:
-        managed = False
+
         db_table = 'carvender'
 
 
@@ -65,7 +65,7 @@ class Drivetype(models.Model):
     def __str__(self):
         return self.type
     class Meta:
-        managed = False
+
         db_table = 'drivetype'
 
 
@@ -74,7 +74,7 @@ class Fueltype(models.Model):
     def __str__(self):
         return self.fuelname
     class Meta:
-        managed = False
+
         db_table = 'fueltype'
 
 
@@ -83,7 +83,7 @@ class Gearbox(models.Model):
     def __str__(self):
         return self.gearboxcotype
     class Meta:
-        managed = False
+
         db_table = 'gearbox'
 
 
@@ -92,7 +92,7 @@ class Region(models.Model):
     def __str__(self):
         return self.region
     class Meta:
-        managed = False
+
         db_table = 'region'
 
 
@@ -109,7 +109,7 @@ class Sellrequest(models.Model):
     color = models.CharField(db_column='Color', max_length=45, blank=True, null=True)  # Field name made lowercase.
     carmodelid = models.ForeignKey(Carmodel, models.DO_NOTHING, db_column='CarModelId', blank=True, null=True)  # Field name made lowercase.
     carstateid = models.ForeignKey(Carstate, models.DO_NOTHING, db_column='CarStateId', blank=True, null=True)  # Field name made lowercase.
-    #CreationDate = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    CreationDate = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     # image = models.ImageField(default="33.jpg", null=True, blank=True, upload_to='cars_imgs')
 
     def __str__(self):
@@ -126,12 +126,12 @@ class Sellrequest(models.Model):
     #     if img.height>300 or img.width>300:
     #         img.thumbnail((300,300))
     #         img.save(self.image.path)
-
+    #
 
     class Meta:
-        managed = False
+
         db_table = 'sellrequest'
-        # ordering = ('-CreationDate',)
+        ordering = ('-CreationDate',)
 
 class User(models.Model):
     name = models.CharField(db_column='Name', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -145,5 +145,5 @@ class User(models.Model):
     def __str__(self):
         return str(f"{self.name} {self.surname}")
     class Meta:
-        managed = False
+
         db_table = 'user'

@@ -1,5 +1,7 @@
 body {margin:0;
-  background-image: url("/media/33.jpg");
+  background: url("/static/33.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 
 }
 
@@ -15,19 +17,19 @@ li {
 .navbar {
   overflow: hidden;
   background-color: #333;
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
 }
 
 .navbar a {
-  float: left;
+  float:left;
   display:block;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 10px;
+  font-size: 29px;
 }
 
 .navbar a:hover {

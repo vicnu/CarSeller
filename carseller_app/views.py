@@ -71,11 +71,11 @@ class SellUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
             "drivetypeid","gearboxid","color","carmodelid","carstateid"]
 
     def form_valid(self, form):
-        form.instance.Author=self.request.user
+        form.instance.userid = self.request.user
         return super().form_valid(form)
     def test_func(self):
         sell=self.get_object()
-        return self.request.user==sell.Author
+        return self.request.user==sell.userid
 #
 class SellDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
     model = Sellrequest
