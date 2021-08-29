@@ -1,3 +1,6 @@
+
+import kwargs as kwargs
+import self as self
 from django.shortcuts import render,HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
@@ -6,10 +9,11 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
+    View
 )
 from .filters import SellFilter
-from .models import Sellrequest
+from .models import Sellrequest,User
 
 # Create your views here.
 def page_not_found(request,exception):
@@ -105,3 +109,23 @@ class SellListView(FilterSellListView):
     template_name = "carseller_app/index.html"
     context_object_name = "sells"
     paginate_by = 5
+
+    def get_queryset(self):
+
+        qs=super().get_queryset()
+        req=self.request.GET
+        self.filtered=self.filter_class(req,qs)
+        return self.filtered.qs.distinct()
+
+class SellAuthorListView(DetailView):
+
+    model = User
+    context_object_name = 'user'
+    template_name = "carseller_app/users_sells.html"
+    pk_url_kwarg = 'pk'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['users_sell_requests'] = Sellrequest.objects.filter(userid=self.kwargs['pk'])
+        return context
+

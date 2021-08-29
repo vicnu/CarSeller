@@ -1,0 +1,51 @@
+{% extends "carseller_app/base.html" %}
+{% block title%}
+{{title}}
+{% endblock %}
+{% block description %}
+    {%if messages%}
+        {%for message in messages%}
+     <p>{{message}}</p>
+        {%endfor%}
+    {%endif%}
+    <h2>Sells of user "{{user.name}}"</h2>
+{#    {{ users_sell_requests }}#}
+   {%for sell in users_sell_requests%}
+
+           <a href="{% url 'carseller_app-users_sells' sell.userid.id %}">
+             {%if sell.Author.profile and sell.Author.profile.image %}
+                <h3><img style = "width: 150px;height: 150px"
+                         src="{{sell.Author.profile.image.url}}" alt
+                        ="{{sell.Author.username}}"></h3>
+
+            {%endif%}
+             </span>
+           </a>
+
+            <h3><a href="{%  url 'sell_detail' sell.id %}">{{sell.carmodelid.modelname}}
+                {{ sell.carmodelid.carvenderid.carvendername }}</a></h3>
+
+            <br>
+    {%endfor%}
+
+{% if is_paginated %}
+    {% if page_obj.has_previous %}
+        <a href="?page=1">first</a>
+        <a href="?page={{ page_obj.previous_page_number }}">Prev</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+            <a style = "color: black" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'+3' %}
+            <a href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {%if page_obj.has_next%}
+        <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+    {% endif %}
+{% endif %}
+
+{% endblock %}

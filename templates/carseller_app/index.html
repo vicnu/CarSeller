@@ -9,25 +9,24 @@
 
 
 {%for sell in sells%}
-{#    <div  class="styr">#}
-
-{#        <p>{{tyr.TyrType}}</p>#}
-{#        <p>{{tyr.TyrPhoto}}</p>#}
-{#        <p>{{tyr.TyrPrice}}</p>#}
-{#    </div>#}
 
     <div class="styr">
-            {%if sell.Author.profile and sell.Author.profile.image %}
-                <h2><img style = "width: 150px;height: 150px"
-                         src="{{object.Author.profile.image.url}}" alt
-                        ="{{object.Author.username}}">{{sell.carmodelid.modelname}}</h2>
-            {%endif%}
+{#            {%if sell.Author.profile and sell.Author.profile.image %}#}
+{#                <h2><img style = "width: 150px;height: 150px"#}
+{#                         src="{{object.Author.profile.image.url}}" alt#}
+{#                        ="{{object.Author.username}}">{{sell.carmodelid.modelname}}</h2>#}
+{#            {%endif%}#}
             <h2><a href="{%  url 'sell_detail' sell.id %}">{{sell.carmodelid.modelname}}
                 {{sell.carmodelid.carvenderid.carvendername}}</a></h2>
             <p>Продаеться в  {{sell.region}}</p>
             <p>Цена {{sell.price}}</p>
 
-        </div>
+        {{sell.Author.username}}
+     {%if object.userid != 0 %}
+            <a href="{% url 'carseller_app-users_sells' sell.userid.id %}">Все продажи автора</a>
+
+        {%endif%}
+    </div>
 {%endfor%}
     <h3 class="white">Найди свою машину</h3>
 <form method="GET" class="white">

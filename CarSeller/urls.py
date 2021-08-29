@@ -42,6 +42,13 @@ urlpatterns = [
     path('sell/new/',views.SellCreateView.as_view(template_name="carseller_app/sellrequest_form.html"),name="sell-create"),
     path('sell/<int:pk>/update/', views.SellUpdateView.as_view(), name="sell-update"),
     path('sell/<int:pk>/delete/', views.SellDeleteView.as_view(), name="sell-delete"),
+    path("sell/user/<int:pk>/",views.SellAuthorListView.as_view(),name="carseller_app-users_sells"),
+    path('password-reset',auth_views.PasswordResetView.as_view(template_name="users/password_reset.html"),
+         name="password_reset"),
+    path('password-reset-done',auth_views.PasswordResetDoneView.as_view(template_name="users/password_reset_done.html"),
+         name="password_reset_done"),
+path("password-reset-complete",
+         auth_views.PasswordResetCompleteView.as_view(template_name="users/password_reset_complete.html"),name="password_reset_complete"),
 ]
 
 # handler404='carseller_app.views.page_not_found'

@@ -12,7 +12,7 @@ def register(request):
             form.save()
             username = form.cleaned_data.get("username")
             messages.success(request, f"Account was created for {username}")
-            return redirect("home")
+            return redirect("carseller_app-home")
     else:
         form = UserRegistrationForm()
     context = {"form": form}

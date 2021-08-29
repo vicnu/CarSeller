@@ -10,8 +10,11 @@
         {%if object.Author.profile and object.Author.profile.image %}
             <h3><img style = "width: 150px;height: 150px"
                      src="{{object.Author.profile.image.url}}"
-                     alt ="{{object.Author.username}}"></h3>
+                     alt ="{{object.Author.username}}">
+
+                </h3>
         {%endif%}
+    <br>
         <p> {{object.price}}</p>
         <p> {{object.region}}</p>
         <p> {{object.carstateid }}</p>
