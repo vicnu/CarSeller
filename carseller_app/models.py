@@ -145,7 +145,7 @@ class User(models.Model):
     country = models.CharField(db_column='Country', max_length=45, blank=True, null=True)  # Field name made lowercase.
     city = models.CharField(db_column='City', max_length=45, blank=True, null=True)  # Field name made lowercase.
     region = models.ForeignKey(Region, models.DO_NOTHING, db_column='Region', blank=True, null=True)  # Field name made lowercase.
-
+    Author = models.ForeignKey(User, db_column='Author', null=True, default=None, blank=True, on_delete=models.CASCADE)
     def __str__(self):
         return str(f"{self.name} {self.surname}")
     class Meta:

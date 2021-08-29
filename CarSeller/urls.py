@@ -44,7 +44,7 @@ urlpatterns = [
     path('sell/<int:pk>/delete/', views.SellDeleteView.as_view(), name="sell-delete"),
 ]
 
-handler404='carseller_app.views.page_not_found'
+# handler404='carseller_app.views.page_not_found'
 handler403='carseller_app.views.error403'
 
 
