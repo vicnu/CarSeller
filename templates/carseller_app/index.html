@@ -29,7 +29,7 @@
     </div>
 {%endfor%}
     <h3 class="white">Найди свою машину</h3>
-<form method="GET" class="white">
+<form method="GET" class="menu">
     {%csrf_token%}
     {{ filter.form|crispy }}
     <button type = "submit">Filter</button>

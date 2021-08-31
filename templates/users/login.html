@@ -1,14 +1,18 @@
 {% extends "carseller_app/base.html" %}
 {%load crispy_forms_tags%}
 {% block description %}
+    <h3>Вам необходимо авторизоваться</h3>
    <form method="POST">
        {%csrf_token%}
        {{form|crispy}}
-       <h3>sing please up!</h3>
+
 
        <b></b>
        <div class="">
-           <button type="submit">Login</button>
+           <button type="submit">Вход</button><br>
+
+           <button><a href = "{% url 'password_reset'%}">Напомнить пароль</a></button>
+
        </div>
    </form>
 {% endblock %}

@@ -13,7 +13,7 @@ from django.views.generic import (
     View
 )
 from .filters import SellFilter
-from .models import Sellrequest,User
+from .models import Sellrequest,User,Pin
 
 # Create your views here.
 def page_not_found(request,exception):
@@ -129,3 +129,11 @@ class SellAuthorListView(DetailView):
         context['users_sell_requests'] = Sellrequest.objects.filter(userid=self.kwargs['pk'])
         return context
 
+class PinCreateView(LoginRequiredMixin,CreateView):
+    model=Pin
+    fields = "__all__"
+
+
+    def form_valid(self, form):
+        form.instance.Author=self.request.user
+        return super().form_valid(form)

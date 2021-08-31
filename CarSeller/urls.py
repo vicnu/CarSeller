@@ -47,8 +47,9 @@ urlpatterns = [
          name="password_reset"),
     path('password-reset-done',auth_views.PasswordResetDoneView.as_view(template_name="users/password_reset_done.html"),
          name="password_reset_done"),
-path("password-reset-complete",
+    path("password-reset-complete",
          auth_views.PasswordResetCompleteView.as_view(template_name="users/password_reset_complete.html"),name="password_reset_complete"),
+    path('pin/new/',views.PinCreateView.as_view(template_name="carseller_app/pin_form.html"),name="pin-create"),
 ]
 
 # handler404='carseller_app.views.page_not_found'

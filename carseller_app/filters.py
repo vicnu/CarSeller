@@ -6,5 +6,5 @@ class SellFilter(django_filters.FilterSet):
 
     class Meta:
         model=Sellrequest
-        fields=["region","price","carbodyid"]
+        fields=["region","carmodelid","price","carbodyid",]
 

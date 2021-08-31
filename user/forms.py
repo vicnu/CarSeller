@@ -12,6 +12,7 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ["username", "email","password1","password2"]
 
+
 #создание класса для обнавления даных пользователя
 #
 class UserUpdateForm(forms.ModelForm):

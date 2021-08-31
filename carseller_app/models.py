@@ -47,10 +47,14 @@ class Cart(models.Model):
     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
     userid = models.ForeignKey('User', models.DO_NOTHING, db_column='UserId', blank=True, null=True)  # Field name made lowercase.
     requestid = models.ForeignKey('Sellrequest', models.DO_NOTHING, db_column='RequestId', blank=True, null=True)  # Field name made lowercase.
+    def __str__(self):
+        return str(f"{self.userid} {self.requestid} ")
 
     class Meta:
         managed = False
         db_table = 'cart'
+
+
 
 
 class Carvender(models.Model):
@@ -154,3 +158,9 @@ class User(models.Model):
 
         db_table = 'user'
         ordering = ('name',)
+
+
+class Pin(models.Model):
+    selles = models.ForeignKey(Sellrequest, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    other = models.CharField( max_length=45, blank=True, null=True)

@@ -14,17 +14,17 @@
 <header>
     <div class="navbar">
         <nav>
-                <a href = "{% url 'carseller_app-home'%}">Home</a><
-                <a href = "{% url 'about'%}">About</a>
-                <a href = "{% url 'faq'%}">Questions</a>
-                <a href = "{% url 'contacts'%}">Contacts</a>
+                <a href = "{% url 'carseller_app-home'%}">Главная</a><
+                <a href = "{% url 'about'%}">О сайте</a>
+                <a href = "{% url 'faq'%}">Вопросы</a>
+                <a href = "{% url 'contacts'%}">Контакты</a>
            {% if user.is_authenticated %}
-                    <a href = "{% url 'sell-create'%}">Create</a>
-                    <a style="margin-left:200px" href  = "{% url 'users-profile'%}">My profile</a>
-                    <a  href = "{% url 'users-logout'%}">Log out</a>
+                    <a href = "{% url 'sell-create'%}">Создать заявку</a>
+                    <a style="margin-left:200px" href  = "{% url 'users-profile'%}">Мой профиль</a>
+                    <a  href = "{% url 'users-logout'%}">Выход</a>
             {% else %}
-                   <a style="margin-left:200px" href = "{% url 'users-register'%}">Sign Up</a>
-                    <a href = "{% url 'users-login'%}">Sign in</a>
+                   <a style="margin-left:200px" href = "{% url 'users-register'%}">Регистрация</a>
+                    <a href = "{% url 'users-login'%}">Вход</a>
             {% endif %}
         </nav>
     </div>
